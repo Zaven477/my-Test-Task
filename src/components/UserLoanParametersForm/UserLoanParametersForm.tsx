@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../AppRouter/routes";
 import { useCallback } from "react";
 import type { UserLoan } from "./types";
-import { useAppDispatch } from "../../store/hook";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { setUserApply } from "../../store/reducer/userApplySlice";
+import { selectUserData } from "../../store/selectors";
+import { sendDataApply } from "../../store/effectsSendApply";
 
 export const UserLoanParametersForm = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { userData } = useAppSelector(selectUserData);
   const initialValues = { amount: 200, term: 10 };
 
   const goToEmploymentAddress = useCallback(() => {
@@ -17,8 +20,13 @@ export const UserLoanParametersForm = () => {
   }, [navigate]);
 
   const apply = (values: UserLoan) => {
-    dispatch(setUserApply(values))
-  }
+    dispatch(setUserApply(values));
+    if (userData) {
+      const userInitials = `${userData.firstName} ${userData.lastName}`;
+      const dataApply = { title: userInitials, ...values };
+      dispatch(sendDataApply(dataApply));
+    }
+  };
 
   return (
     <Formik
