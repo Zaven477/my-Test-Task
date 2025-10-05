@@ -3,19 +3,30 @@ import { validationSchemaFieldsUserForm } from "./validationUserForm";
 import type { PersonalData } from "./types";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../AppRouter/routes";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { setUserData } from "../../store/reducer/userDataSlice";
+import { selectUserData } from "../../store/selectors";
+import { useCallback } from "react";
 
 export const UserDataForm = () => {
+  const dispatch = useAppDispatch();
+  const { userData } = useAppSelector(selectUserData);
   const navigate = useNavigate();
+
   const initialValues = {
-    phone: "",
-    firstName: "",
-    lastName: "",
-    gender: "",
+    phone: userData?.phone || "",
+    firstName: userData?.firstName || "",
+    lastName: userData?.lastName || "",
+    gender: userData?.gender || "",
   };
 
-  const goToEmploymentAddress = (values: PersonalData) => {
-    navigate(ROUTES.WORK_ADDRESS);
-  };
+  const goToEmploymentAddress = useCallback(
+    (values: PersonalData) => {
+      dispatch(setUserData(values));
+      navigate(ROUTES.WORK_ADDRESS);
+    },
+    [dispatch, navigate]
+  );
 
   return (
     <Formik

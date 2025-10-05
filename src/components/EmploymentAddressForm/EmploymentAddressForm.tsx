@@ -1,32 +1,45 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { fetchWorkplaces } from "../../api/getWorkplaces";
 import { validationSchemaFieldsForm } from "./validationFieldsForm";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { ROUTES } from "../../AppRouter/routes";
+import { useCallback, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { getDataWorkplaces } from "../../store/effects";
+import { selectEmploymentAddress } from "../../store/selectors";
+import type { UserAddress } from "./types";
+import { setAddress } from "../../store/reducer/employmentAddressSlice";
 
 export const EmploymentAddressForm = () => {
   const navigate = useNavigate();
-
-  const { data } = useQuery({
-    queryKey: ["workplaces"],
-    queryFn: fetchWorkplaces,
-  });
+  const dispatch = useAppDispatch();
+  const { employments, error } = useAppSelector(selectEmploymentAddress);
 
   const initialValues = {
     workPlace: "",
     address: "",
   };
 
-  const goToUserData = () => {
+  const goToUserData = useCallback(() => {
     navigate(ROUTES.USER_DATA);
-  };
+  }, [navigate]);
+
+  const goToLoan = useCallback(
+    (values: UserAddress) => {
+      dispatch(setAddress({ address: values.address }));
+      navigate(ROUTES.LOAN);
+    },
+    [dispatch, navigate]
+  );
+
+  useEffect(() => {
+    dispatch(getDataWorkplaces());
+  }, [dispatch]);
 
   return (
     <Formik
       validationSchema={validationSchemaFieldsForm}
       initialValues={initialValues}
-      onSubmit={(values) => {}}
+      onSubmit={(values) => goToLoan(values)}
     >
       {() => {
         return (
@@ -40,10 +53,11 @@ export const EmploymentAddressForm = () => {
                   className="h-[29px] w-[307px]"
                 >
                   <option value="">Выберите место работы</option>
-                  {data?.map((name: string, index: number) => (
+                  {employments.map((name: string, index: number) => (
                     <option key={index}>{name}</option>
                   ))}
                 </Field>
+                {error && <span className="text-[red]">{error}</span>}
                 <ErrorMessage
                   name="workPlace"
                   component="span"
@@ -66,6 +80,7 @@ export const EmploymentAddressForm = () => {
               <div className="flex gap-[10px] ml-[90px] mt-[10px]">
                 <button
                   className="w-[100px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer"
+                  type="button"
                   onClick={goToUserData}
                 >
                   Назад
