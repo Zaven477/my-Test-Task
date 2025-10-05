@@ -19,14 +19,17 @@ export const UserLoanParametersForm = () => {
     navigate(ROUTES.WORK_ADDRESS);
   }, [navigate]);
 
-  const apply = (values: UserLoan) => {
-    dispatch(setUserApply(values));
-    if (userData) {
-      const userInitials = `${userData.firstName} ${userData.lastName}`;
-      const dataApply = { title: userInitials, ...values };
-      dispatch(sendDataApply(dataApply));
-    }
-  };
+  const apply = useCallback(
+    (values: UserLoan) => {
+      dispatch(setUserApply(values));
+      if (userData) {
+        const userInitials = `${userData.firstName} ${userData.lastName}`;
+        const dataApply = { title: userInitials, ...values };
+        dispatch(sendDataApply(dataApply));
+      }
+    },
+    [dispatch, userData]
+  );
 
   return (
     <Formik
@@ -38,6 +41,7 @@ export const UserLoanParametersForm = () => {
         return (
           <Form>
             <div className="flex flex-col items-center justify-center h-[100vh] gap-[10px]">
+              <h2>Параметры займа</h2>
               <div className="flex flex-col gap-[5px]">
                 <label>Сумма займа: {values.amount}</label>
                 <input

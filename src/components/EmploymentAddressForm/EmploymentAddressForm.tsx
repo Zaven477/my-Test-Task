@@ -45,6 +45,7 @@ export const EmploymentAddressForm = () => {
         return (
           <Form>
             <div className="flex flex-col items-center justify-center h-[100vh] gap-[10px]">
+              <h2>Адрес и место работы</h2>
               <div className="flex flex-col gap-[5px]">
                 <label>Место работы:</label>
                 <Field

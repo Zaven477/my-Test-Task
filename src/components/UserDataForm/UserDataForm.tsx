@@ -38,6 +38,7 @@ export const UserDataForm = () => {
         return (
           <Form>
             <div className="flex flex-col items-center justify-center h-[100vh] gap-[10px]">
+              <h2>Личные данные</h2>
               <div className="flex flex-col gap-[5px]">
                 <label>Телефон:</label>
                 <Field
