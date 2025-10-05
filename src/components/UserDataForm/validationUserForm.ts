@@ -6,8 +6,8 @@ export const validationSchemaFieldsUserForm = Yup.object().shape({
   phone: Yup.string()
     .transform((value) => value.trim())
     .matches(phoneRegex, "Телефон должен быть в формате 0XXX XXX XXX")
-    .required("Телефон обязателен"),
-  firstName: Yup.string().required("Имя обязательно"),
-  lastName: Yup.string().required("Фамилия обязательна"),
-  gender: Yup.string().required("Пол обязателен"),
+    .required("Поле обязательное"),
+  firstName: Yup.string().required("Поле обязательное"),
+  lastName: Yup.string().required("Поле обязательное"),
+  gender: Yup.string().required("Поле обязательное"),
 });

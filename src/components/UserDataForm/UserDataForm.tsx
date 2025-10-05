@@ -1,7 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { validationSchemaFieldsUserForm } from "./validationUserForm";
+import type { PersonalData } from "./types";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../AppRouter/routes";
 
-export const DataUserForm = () => {
+export const UserDataForm = () => {
+  const navigate = useNavigate();
   const initialValues = {
     phone: "",
     firstName: "",
@@ -9,11 +13,15 @@ export const DataUserForm = () => {
     gender: "",
   };
 
+  const goToEmploymentAddress = (values: PersonalData) => {
+    navigate(ROUTES.WORK_ADDRESS);
+  };
+
   return (
     <Formik
       validationSchema={validationSchemaFieldsUserForm}
       initialValues={initialValues}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => goToEmploymentAddress(values)}
     >
       {() => {
         return (
