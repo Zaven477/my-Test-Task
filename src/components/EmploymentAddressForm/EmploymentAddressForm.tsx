@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../AppRouter/routes";
 import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
-import { getDataWorkplaces } from "../../store/effects";
+import { getDataWorkplaces } from "../../store/effectsDataWorkplaces";
 import { selectEmploymentAddress } from "../../store/selectors";
 import type { UserAddress } from "./types";
 import { setEmploymentAddress } from "../../store/reducer/employmentAddressSlice";
