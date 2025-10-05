@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type Address = {
+type TWorkplaceAddress = {
+  workplace: string;
   address: string;
 };
 
 type EmploymentAddress = {
   employments: string[];
-  address: Address | null;
+  workplaceAddress: TWorkplaceAddress | null;
 };
 
 type ErrorData = {
@@ -15,7 +16,7 @@ type ErrorData = {
 
 const initialState: EmploymentAddress & ErrorData = {
   employments: [],
-  address: null,
+  workplaceAddress: null,
   error: null,
 };
 
@@ -23,11 +24,11 @@ export const employmentAddressSlice = createSlice({
   name: "userEmploymentAddress",
   initialState,
   reducers: {
-    setEmployment: (state, { payload }) => {
+    setEmployments: (state, { payload }) => {
       state.employments = payload;
     },
-    setAddress: (state, { payload }) => {
-      state.address = payload;
+    setEmploymentAddress: (state, { payload }) => {
+      state.workplaceAddress = payload;
     },
     setError: (state, { payload }) => {
       state.error = payload;
@@ -35,7 +36,7 @@ export const employmentAddressSlice = createSlice({
   },
 });
 
-export const { setEmployment, setAddress, setError } =
+export const { setEmployments, setEmploymentAddress, setError } =
   employmentAddressSlice.actions;
 
 export const userEmploymentAddressReducer = employmentAddressSlice.reducer;

@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { getDataWorkplaces } from "../../store/effects";
 import { selectEmploymentAddress } from "../../store/selectors";
 import type { UserAddress } from "./types";
-import { setAddress } from "../../store/reducer/employmentAddressSlice";
+import { setEmploymentAddress } from "../../store/reducer/employmentAddressSlice";
 
 export const EmploymentAddressForm = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export const EmploymentAddressForm = () => {
 
   const goToLoan = useCallback(
     (values: UserAddress) => {
-      dispatch(setAddress({ address: values.address }));
+      dispatch(setEmploymentAddress(values));
       navigate(ROUTES.LOAN);
     },
     [dispatch, navigate]
