@@ -1,3 +1,4 @@
-export type UserAddress = {
+export type UserEmploymentAddress = {
+  workPlace: string;
   address: string;
 };
