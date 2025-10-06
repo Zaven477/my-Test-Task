@@ -8,6 +8,11 @@ import { setUserData } from "../../store/reducer/userDataSlice";
 import { selectUserData } from "../../store/selectors";
 import { useCallback } from "react";
 
+
+//В приложении используется библиотека Formik, так как она хорошо подходит для работы с многошаговыми формами.
+//Логика формы изолируется внутри Formik, что делает код более читаемым и масштабируемым и хорошо интегрируется с Yup.
+//Для стилизации использую Tailwind CSS, потому что он обеспечивает быструю разработку интерфейса за счёт утилитарных классов.
+
 export const UserDataForm = () => {
   const dispatch = useAppDispatch();
   const { userData } = useAppSelector(selectUserData);
