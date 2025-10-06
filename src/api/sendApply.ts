@@ -2,8 +2,7 @@ import type {
   UserInitials,
   UserLoan,
 } from "../components/UserLoanParametersForm/types";
-
-const BASE_URL = "https://dummyjson.com";
+import { BASE_URL } from "../constants";
 
 export const sendApply = async (dataApply: UserLoan & UserInitials) => {
   const response = await fetch(`${BASE_URL}/products/add`, {
