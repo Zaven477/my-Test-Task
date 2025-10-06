@@ -8,7 +8,7 @@ export const MaskedInput = ({ field, mask, ...props }: MaskedInputProps) => {
       {...props}
       mask={mask}
       definitions={{ "9": /[0-9]/ }}
-      inputMode="numeric"
+      type="text"
     />
   );
 };
