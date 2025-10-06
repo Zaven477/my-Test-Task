@@ -1,11 +1,19 @@
 import { useCallback } from "react";
 import type { OpenModalApproved, UserApproved } from "./types";
+import { getDayWord } from "./getDayWord";
 
 export const LoanApprovedModal = ({
   userData,
   userApplyData,
   setOpenModal,
 }: UserApproved & OpenModalApproved) => {
+
+  const approvalMessage = `Поздравляем ${userData?.lastName} ${
+    userData?.firstName
+  }. Вам одобрена ${userApplyData?.amount} на ${
+    userApplyData?.term
+  } ${getDayWord(userApplyData?.term)}.`;
+
   const closeModalApproved = useCallback(() => {
     setOpenModal(false);
   }, [setOpenModal]);
@@ -15,8 +23,7 @@ export const LoanApprovedModal = ({
       <div className="shadow-md bg-[white] w-[500px] h-[100px] absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 rounded-[3px] max-[550px]:w-[400px] max-[440px]:w-[300px]">
         <div className="flex justify-center">
           <span className="text-[18px] mt-[10px] max-[550px]:w-[360px] max-[440px]:w-[280px]">
-            Поздравляем {userData?.lastName} {userData?.firstName}. Вам одобрена{" "}
-            {userApplyData?.amount} на {userApplyData?.term} дней.
+            {approvalMessage}
           </span>
         </div>
         <div className="flex justify-end pr-[10px]">

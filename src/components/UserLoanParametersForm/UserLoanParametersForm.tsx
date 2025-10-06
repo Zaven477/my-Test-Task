@@ -9,6 +9,7 @@ import { setUserApply } from "../../store/reducer/userApplySlice";
 import { selectApplyData, selectUserData } from "../../store/selectors";
 import { sendDataApply } from "../../store/effectsSendApply";
 import { LoanApprovedModal } from "../LoanApprovedModal/LoanApprovedModal";
+import { getDayWord } from "../LoanApprovedModal/getDayWord";
 
 export const UserLoanParametersForm = () => {
   const [isOpenModal, setOpenModal] = useState(false);
@@ -73,7 +74,9 @@ export const UserLoanParametersForm = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-[5px] mt-[20px]">
-                  <label>Срок займа: {values.term} дней</label>
+                  <label>
+                    Срок займа: {values.term} {getDayWord(values.term)}
+                  </label>
                   <input
                     type="range"
                     name="term"
