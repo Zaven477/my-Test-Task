@@ -11,8 +11,9 @@ export type FieldPhone = {
   field: FieldInputProps<string>;
 };
 
-export interface MaskedInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface MaskedInputProps {
   field: FieldInputProps<string>;
-  mask: string | object;
+  mask: string;
+  placeholder: string;
+  className: string;
 }

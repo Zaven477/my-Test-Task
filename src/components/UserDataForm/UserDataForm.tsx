@@ -46,7 +46,7 @@ export const UserDataForm = () => {
                   {({ field }: FieldPhone) => (
                     <MaskedInput
                       field={field}
-                      mask="0 999 999 999"
+                      mask="0 000 000 000"
                       placeholder="0XXX XXX XXX"
                       className="h-[25px] w-[300px] text-[16px]"
                     />
