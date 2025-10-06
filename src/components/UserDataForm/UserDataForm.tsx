@@ -1,13 +1,13 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { validationSchemaFieldsUserForm } from "./validationUserForm";
-import type { PersonalData } from "./types";
+import type { FieldPhone, PersonalData } from "./types";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../AppRouter/routes";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { setUserData } from "../../store/reducer/userDataSlice";
 import { selectUserData } from "../../store/selectors";
 import { useCallback } from "react";
-
+import { MaskedInput } from "./MaskedInput/MaskedInput";
 
 //В приложении используется библиотека Formik, так как она хорошо подходит для работы с многошаговыми формами.
 //Логика формы изолируется внутри Formik, что делает код более читаемым и масштабируемым и хорошо интегрируется с Yup.
@@ -46,12 +46,16 @@ export const UserDataForm = () => {
               <h2>Личные данные</h2>
               <div className="flex flex-col gap-[5px]">
                 <label>Телефон:</label>
-                <Field
-                  type="tel"
-                  name="phone"
-                  placeholder="0XXX XXX XXX"
-                  className="h-[25px] w-[300px] text-[16px]"
-                />
+                <Field name="phone">
+                  {({ field }: FieldPhone) => (
+                    <MaskedInput
+                      field={field}
+                      mask="0 999 999 999"
+                      placeholder="0XXX XXX XXX"
+                      className="h-[25px] w-[300px] text-[16px]"
+                    />
+                  )}
+                </Field>
                 <ErrorMessage
                   name="phone"
                   component="span"
