@@ -1,12 +1,17 @@
 import { createSelector } from "@reduxjs/toolkit";
 import type { RootState } from "./reducer/reducers";
 
-export const selectUserDataFormState = (state: RootState) => state;
+export const selectCurrentState = (state: RootState) => state;
 export const selectUserData = createSelector(
-  selectUserDataFormState,
+  selectCurrentState,
   (state) => state.usersData
 );
 export const selectEmploymentAddress = createSelector(
-  selectUserDataFormState,
+  selectCurrentState,
   (state) => state.employmentAddress
+);
+
+export const selectApplyData = createSelector(
+  selectCurrentState,
+  (state) => state.applyData
 );
