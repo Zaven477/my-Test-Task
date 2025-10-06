@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import type { OpenModalApproved, UserApproved } from "./types";
 import { getDayWord } from "./getDayWord";
 
@@ -7,16 +6,15 @@ export const LoanApprovedModal = ({
   userApplyData,
   setOpenModal,
 }: UserApproved & OpenModalApproved) => {
-
   const approvalMessage = `Поздравляем ${userData?.lastName} ${
     userData?.firstName
   }. Вам одобрена ${userApplyData?.amount} на ${
     userApplyData?.term
   } ${getDayWord(userApplyData?.term)}.`;
 
-  const closeModalApproved = useCallback(() => {
+  const closeModalApproved = () => {
     setOpenModal(false);
-  }, [setOpenModal]);
+  };
 
   return (
     <div className="fixed top-[0px] right-[0px] bottom-[0px] left-[0px] bg-[rgba(0,0,0,0.5)]">

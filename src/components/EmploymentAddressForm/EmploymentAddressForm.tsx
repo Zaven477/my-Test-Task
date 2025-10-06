@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { validationSchemaFieldsForm } from "./validationFieldsForm";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../AppRouter/routes";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { getDataWorkplaces } from "../../store/effectsDataWorkplaces";
 import { selectEmploymentAddress } from "../../store/selectors";
@@ -19,17 +19,14 @@ export const EmploymentAddressForm = () => {
     address: "",
   };
 
-  const goToUserData = useCallback(() => {
+  const goToUserData = () => {
     navigate(ROUTES.USER_DATA);
-  }, [navigate]);
+  };
 
-  const goToLoan = useCallback(
-    (values: UserEmploymentAddress) => {
-      dispatch(setEmploymentAddress(values));
-      navigate(ROUTES.LOAN);
-    },
-    [dispatch, navigate]
-  );
+  const goToLoan = (values: UserEmploymentAddress) => {
+    dispatch(setEmploymentAddress(values));
+    navigate(ROUTES.LOAN);
+  };
 
   useEffect(() => {
     dispatch(getDataWorkplaces());

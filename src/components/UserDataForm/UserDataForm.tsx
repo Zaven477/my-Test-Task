@@ -6,7 +6,6 @@ import { ROUTES } from "../../AppRouter/routes";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { setUserData } from "../../store/reducer/userDataSlice";
 import { selectUserData } from "../../store/selectors";
-import { useCallback } from "react";
 import { MaskedInput } from "./MaskedInput/MaskedInput";
 
 //В приложении используется библиотека Formik, так как она хорошо подходит для работы с многошаговыми формами.
@@ -25,13 +24,10 @@ export const UserDataForm = () => {
     gender: userData?.gender || "",
   };
 
-  const goToEmploymentAddress = useCallback(
-    (values: PersonalData) => {
-      dispatch(setUserData(values));
-      navigate(ROUTES.WORK_ADDRESS);
-    },
-    [dispatch, navigate]
-  );
+  const goToEmploymentAddress = (values: PersonalData) => {
+    dispatch(setUserData(values));
+    navigate(ROUTES.WORK_ADDRESS);
+  };
 
   return (
     <Formik

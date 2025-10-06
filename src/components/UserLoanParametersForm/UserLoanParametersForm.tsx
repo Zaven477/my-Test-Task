@@ -2,7 +2,7 @@ import { ErrorMessage, Form, Formik } from "formik";
 import { validationSchema } from "./validation";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../AppRouter/routes";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { UserLoan } from "./types";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { setUserApply } from "../../store/reducer/userApplySlice";
@@ -19,21 +19,18 @@ export const UserLoanParametersForm = () => {
   const { resultApply, userApplyData } = useAppSelector(selectApplyData);
   const initialValues = { amount: 200, term: 10 };
 
-  const goToEmploymentAddress = useCallback(() => {
+  const goToEmploymentAddress = () => {
     navigate(ROUTES.WORK_ADDRESS);
-  }, [navigate]);
+  };
 
-  const apply = useCallback(
-    (values: UserLoan) => {
-      dispatch(setUserApply(values));
-      if (userData) {
-        const userInitials = `${userData?.firstName} ${userData?.lastName}`;
-        const dataApply = { title: userInitials, ...values };
-        dispatch(sendDataApply(dataApply));
-      }
-    },
-    [dispatch, userData]
-  );
+  const apply = (values: UserLoan) => {
+    dispatch(setUserApply(values));
+    if (userData) {
+      const userInitials = `${userData?.firstName} ${userData?.lastName}`;
+      const dataApply = { title: userInitials, ...values };
+      dispatch(sendDataApply(dataApply));
+    }
+  };
 
   useEffect(() => {
     if (resultApply) {
