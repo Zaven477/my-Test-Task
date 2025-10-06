@@ -51,7 +51,7 @@ export const EmploymentAddressForm = () => {
                 <Field
                   as="select"
                   name="workPlace"
-                  className="h-[29px] w-[307px]"
+                  className="h-[29px] w-[307px] text-[16px]"
                 >
                   <option value="">Выберите место работы</option>
                   {employments.map((name: string, index: number) => (
@@ -70,7 +70,7 @@ export const EmploymentAddressForm = () => {
                 <Field
                   type="text"
                   name="address"
-                  className="h-[25px] w-[300px] pl-[3px]"
+                  className="h-[25px] w-[300px] pl-[3px] text-[16px]"
                 />
                 <ErrorMessage
                   name="address"

@@ -50,7 +50,7 @@ export const UserDataForm = () => {
                   type="tel"
                   name="phone"
                   placeholder="0XXX XXX XXX"
-                  className="h-[25px] w-[300px]"
+                  className="h-[25px] w-[300px] text-[16px]"
                 />
                 <ErrorMessage
                   name="phone"
@@ -63,7 +63,7 @@ export const UserDataForm = () => {
                 <Field
                   type="text"
                   name="firstName"
-                  className="h-[25px] w-[300px]"
+                  className="h-[25px] w-[300px] text-[16px]"
                 />
                 <ErrorMessage
                   name="firstName"
@@ -76,7 +76,7 @@ export const UserDataForm = () => {
                 <Field
                   type="text"
                   name="lastName"
-                  className="h-[25px] w-[300px]"
+                  className="h-[25px] w-[300px] text-[16px]"
                 />
                 <ErrorMessage
                   name="lastName"
@@ -90,7 +90,7 @@ export const UserDataForm = () => {
                   <Field
                     as="select"
                     name="gender"
-                    className="h-[25px] w-[110px]"
+                    className="h-[25px] w-[140px] text-[16px]"
                   >
                     <option value="">Выберите пол</option>
                     <option value="male">Мужской</option>
