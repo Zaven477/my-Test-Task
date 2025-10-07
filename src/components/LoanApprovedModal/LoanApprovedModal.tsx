@@ -1,5 +1,5 @@
 import type { OpenModalApproved, UserApproved } from "./types";
-import { getDayWord } from "./getDayWord";
+import { getDayWord } from "../../utils.ts/getDayWord";
 
 export const LoanApprovedModal = ({
   userData,
