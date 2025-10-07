@@ -1,5 +1,5 @@
 export const ROUTES = {
   USER_DATA: "/",
-  WORK_ADDRESS: "/work-address",
-  LOAN: '/loan',
+  EMPLOYMENT_ADDRESS: "/employment-address",
+  LOAN_PARAMETERS: '/loan-parameters',
 } as const;

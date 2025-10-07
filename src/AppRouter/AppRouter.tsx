@@ -9,8 +9,8 @@ export const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route path={ROUTES.USER_DATA} element={<UserDataForm />} />
-        <Route path={ROUTES.WORK_ADDRESS} element={<EmploymentAddressForm />} />
-        <Route path={ROUTES.LOAN} element={<UserLoanParametersForm />} />
+        <Route path={ROUTES.EMPLOYMENT_ADDRESS} element={<EmploymentAddressForm />} />
+        <Route path={ROUTES.LOAN_PARAMETERS} element={<UserLoanParametersForm />} />
       </Routes>
     </BrowserRouter>
   );
