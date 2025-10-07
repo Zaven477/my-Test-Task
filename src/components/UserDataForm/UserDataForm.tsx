@@ -26,7 +26,7 @@ export const UserDataForm = () => {
 
   const goToEmploymentAddress = (values: PersonalData) => {
     dispatch(setUserData(values));
-    navigate(ROUTES.WORK_ADDRESS);
+    navigate(ROUTES.EMPLOYMENT_ADDRESS);
   };
 
   return (
@@ -48,7 +48,7 @@ export const UserDataForm = () => {
                       field={field}
                       mask="0 000 000 000"
                       placeholder="0XXX XXX XXX"
-                      className="h-[35px] w-[280px] text-[16px] pl-[10px] pr-[10px]"
+                      className="h-[35px] w-[280px] text-[1rem] pl-[10px] pr-[10px] border-none"
                     />
                   )}
                 </Field>
@@ -63,7 +63,7 @@ export const UserDataForm = () => {
                 <Field
                   type="text"
                   name="firstName"
-                  className="h-[35px] w-[280px] text-[16px] pl-[10px] pr-[10px]"
+                  className="h-[35px] w-[280px] text-[1rem] pl-[10px] pr-[10px] border-none"
                 />
                 <ErrorMessage
                   name="firstName"
@@ -76,7 +76,7 @@ export const UserDataForm = () => {
                 <Field
                   type="text"
                   name="lastName"
-                  className="h-[35px] w-[280px] text-[16px] pl-[10px] pr-[10px]"
+                  className="h-[35px] w-[280px] text-[1rem] pl-[10px] pr-[10px] border-none"
                 />
                 <ErrorMessage
                   name="lastName"
@@ -90,7 +90,7 @@ export const UserDataForm = () => {
                   <Field
                     as="select"
                     name="gender"
-                    className="h-[28px] w-[140px] text-[16px]"
+                    className="h-[28px] w-[140px] text-[1rem] border-none"
                   >
                     <option value="">Выберите пол</option>
                     <option value="male">Мужской</option>
@@ -104,7 +104,7 @@ export const UserDataForm = () => {
                 />
               </div>
               <button
-                className="w-[100px] h-[30px] ml-[200px] bg-[#00BFFF] border-none text-[white] cursor-pointer text-[16px]"
+                className="w-[100px] h-[30px] ml-[200px] bg-[#FF8C00] border-none text-[white] cursor-pointer text-[1rem]"
                 type="submit"
               >
                 Далее

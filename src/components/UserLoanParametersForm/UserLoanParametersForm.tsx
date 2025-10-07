@@ -2,25 +2,25 @@ import { ErrorMessage, Form, Formik } from "formik";
 import { validationSchema } from "./validation";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../AppRouter/routes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { UserLoan } from "./types";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { setUserApply } from "../../store/reducer/userApplySlice";
 import { selectApplyData, selectUserData } from "../../store/selectors";
 import { sendDataApply } from "../../store/effectsSendApply";
 import { LoanApprovedModal } from "../LoanApprovedModal/LoanApprovedModal";
-import { getDayWord } from "../LoanApprovedModal/getDayWord";
+import { getDayWord } from "../../utils.ts/getDayWord";
 
 export const UserLoanParametersForm = () => {
   const [isOpenModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { userData } = useAppSelector(selectUserData);
-  const { resultApply, userApplyData } = useAppSelector(selectApplyData);
+  const { userApplyData } = useAppSelector(selectApplyData);
   const initialValues = { amount: 200, term: 10 };
 
   const goToEmploymentAddress = () => {
-    navigate(ROUTES.WORK_ADDRESS);
+    navigate(ROUTES.EMPLOYMENT_ADDRESS);
   };
 
   const apply = (values: UserLoan) => {
@@ -29,14 +29,9 @@ export const UserLoanParametersForm = () => {
       const userInitials = `${userData?.firstName} ${userData?.lastName}`;
       const dataApply = { title: userInitials, ...values };
       dispatch(sendDataApply(dataApply));
-    }
-  };
-
-  useEffect(() => {
-    if (resultApply) {
       setOpenModal(true);
     }
-  }, [resultApply]);
+  };
 
   return (
     <>
@@ -94,14 +89,14 @@ export const UserLoanParametersForm = () => {
                 </div>
                 <div className="flex gap-[10px] ml-[90px] mt-[10px]">
                   <button
-                    className="w-[100px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer text-[16px]"
+                    className="w-[100px] h-[30px] bg-[#FF8C00] border-none text-[white] cursor-pointer text-[1rem]"
                     type="button"
                     onClick={goToEmploymentAddress}
                   >
                     Назад
                   </button>
                   <button
-                    className="w-[130px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer text-[16px]"
+                    className="w-[130px] h-[30px] bg-[#FF8C00] border-none text-[white] cursor-pointer text-[1rem]"
                     type="submit"
                   >
                     Подать заявку
