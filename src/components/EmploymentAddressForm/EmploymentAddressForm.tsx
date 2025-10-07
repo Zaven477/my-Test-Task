@@ -48,7 +48,7 @@ export const EmploymentAddressForm = () => {
                 <Field
                   as="select"
                   name="workPlace"
-                  className="h-[29px] w-[307px] text-[16px]"
+                  className="h-[39px] w-[304px] text-[16px]"
                 >
                   <option value="">Выберите место работы</option>
                   {employments.map((name: string, index: number) => (
@@ -67,7 +67,7 @@ export const EmploymentAddressForm = () => {
                 <Field
                   type="text"
                   name="address"
-                  className="h-[25px] w-[300px] pl-[3px] text-[16px]"
+                  className="h-[35px] w-[280px] pl-[3px] text-[16px] pl-[10px] pr-[10px]"
                 />
                 <ErrorMessage
                   name="address"
@@ -77,14 +77,14 @@ export const EmploymentAddressForm = () => {
               </div>
               <div className="flex gap-[10px] ml-[90px] mt-[10px]">
                 <button
-                  className="w-[100px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer"
+                  className="w-[100px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer text-[16px]"
                   type="button"
                   onClick={goToUserData}
                 >
                   Назад
                 </button>
                 <button
-                  className="w-[100px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer"
+                  className="w-[100px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer text-[16px]"
                   type="submit"
                 >
                   Далее

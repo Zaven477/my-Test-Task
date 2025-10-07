@@ -26,7 +26,7 @@ export const LoanApprovedModal = ({
         </div>
         <div className="flex justify-end pr-[10px]">
           <button
-            className="mt-[35px] w-[80px] h-[25px] bg-[#00BFFF] border-none text-[white] cursor-pointer rounded-[3px] max-[550px]:mt-[15px]"
+            className="mt-[35px] w-[80px] h-[25px] bg-[#00BFFF] border-none text-[white] text-[16px] cursor-pointer rounded-[3px] max-[550px]:mt-[15px]"
             onClick={closeModalApproved}
           >
             Закрыть

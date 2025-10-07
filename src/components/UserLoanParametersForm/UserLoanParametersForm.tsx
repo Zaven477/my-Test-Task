@@ -94,14 +94,14 @@ export const UserLoanParametersForm = () => {
                 </div>
                 <div className="flex gap-[10px] ml-[90px] mt-[10px]">
                   <button
-                    className="w-[100px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer"
+                    className="w-[100px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer text-[16px]"
                     type="button"
                     onClick={goToEmploymentAddress}
                   >
                     Назад
                   </button>
                   <button
-                    className="w-[100px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer"
+                    className="w-[130px] h-[30px] bg-[#00BFFF] border-none text-[white] cursor-pointer text-[16px]"
                     type="submit"
                   >
                     Подать заявку
